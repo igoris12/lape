@@ -16,7 +16,7 @@ $Petras  = rand(5, 25);
 echo "Jonas.$Jonas";
 echo '==';
 echo "$Petras.Petras";
-echo "    ";
+echo '<br>';
 
 if ($Jonas > $Petras) 
     echo "Laimejo Jonas";
@@ -25,7 +25,53 @@ if ($Jonas > $Petras)
    else 
         echo "Laimejo none";
   
+$egzaminoRezultatas = rand(1, 10);
 
+echo '<br>';
+
+if ($egzaminoRezultatas > 3) echo'good';
+else  echo 'not good';
+
+echo '<br>';
+
+
+
+
+
+$automobilioGreitis = rand(40, 125);
+echo "$automobilioGreitis";
+echo '<br>';
+if ($automobilioGreitis > 60) {
+    $bauda = ($automobilioGreitis - 60) * 5;
+    echo "$bauda EUR";
+};
+
+echo '<br>';
+echo '<br>';
+
+$dalyvis1 = rand(1, 4);
+
+$dalyvis2 = rand(1, 4);
+
+// Išvesti dalyvių pasirinktus skaičius ir pranešimą "Laimėjo", 
+//jeigu dalyvių skaičių suma didesnė nei 6 arba tie skaičiai yra vienodi.
+// Pranešimą "Pralaimėjo" - priešingu atveju 
+
+if ($dalyvis1 >  $dalyvis2) {
+    echo "$dalyvis1";
+      echo '$dalyvis1 -Laimėjo';
+     echo '<br>';
+     echo "$dalyvis2";
+     echo '$dalyvis2 -Pralaimėjo';
+}elseif ($dalyvis1 <  $dalyvis2) {
+    echo "$dalyvis2";
+     echo '$dalyvis2 -Laimėjo';
+     echo '<br>';
+     echo "$dalyvis1";
+     echo '$dalyvis1 -Pralaimėjo';
+}else {
+    echo 'nera -Laimėjo';
+}
 
 
 
