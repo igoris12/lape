@@ -5,6 +5,8 @@ $array1 = [];
 $array2 = [];
 $array3 = [];
 
+$array4 =[];
+
 
 for ($i=0; $i<200; $i++) {
     $rNumber=rand(0,3);
@@ -52,6 +54,14 @@ for ($i=0; $i<200; $i++) {
     }
 }
 
+foreach ($array3 as $key =>$value) {
+   $array4 [] = $array2[$key].$array2[$key].$array3[$key];
+}
+
+$arrayInfo = array_count_values($array4);
+$groupsNumber = count($arrayInfo);
+$oneGroup = 0;
+
 
 echo "<pre>";
 print_r($array1);
@@ -59,6 +69,11 @@ print_r($array1);
 print_r($array2);
 
 print_r($array3);
-
+print_r($array4);
+print_r($arrayInfo);
+echo '<br>';
+echo "$groupsNumber: groups";
+echo '<br>';
+echo "$oneGroup : uniq group";
 //hujeta
 
