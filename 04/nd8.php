@@ -39,3 +39,39 @@ echo "<div style='text-align: center; width: 100%;'> <p style='display: inline-b
  
 
 // echo "<p style='display: inline-block; margin: 0;  width: 100%;>$content</p>";
+
+
+
+// echo '8. <br>';
+
+// $puse = 10;
+
+
+
+// for ($i = 1; $i < $puse; $i++) {
+
+//     for ($j = $i; $j < $puse; $j++)
+
+//         echo '&nbsp;&nbsp;&nbsp;';
+
+//     for ($j = 2 * $i - 1; $j > 0; $j--)
+
+//         echo '&nbsp;<span style="color: rgb('.rand(0,255).','.rand(0,255).','.rand(0,255).');">*</span>';
+
+//     echo '<br>';
+
+// }
+
+// for ($i = $puse; $i > 0; $i--) {
+
+//     for ($j = $puse - $i; $j > 0; $j--)
+
+//         echo '&nbsp;&nbsp;&nbsp;';
+
+//     for ($j = 2 * $i - 1; $j > 0; $j--)
+
+//         echo '&nbsp;<span style="color: rgb('.rand(0,255).','.rand(0,255).','.rand(0,255).');">*</span>';
+
+//     echo "<br>";
+
+// }
