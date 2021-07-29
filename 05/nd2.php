@@ -8,8 +8,8 @@ $c1 = 0;
 for ($i=0; $i<30; $i++) {
 $array[] = rand(5,25);
 }
-sort($array);
 
+sort($array);
 echo "<pre>";
 
 print_r($array);
@@ -22,6 +22,7 @@ foreach ($array as $key => $value) {
        $bigerThen10++;
    }
 //b
+
    if ($value == $array[29]) {
         $maxValueCount++;
    }
