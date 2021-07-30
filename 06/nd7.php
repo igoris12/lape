@@ -26,22 +26,28 @@ foreach(range(0,29) as $i) {
         $array[$key]["place_in_row"] = $rowNumber;
     }
 
-        
 
-
-  
-//6
 echo '<pre>';
-sort($array); 
-print_r($array); 
-
-
-
- //6.2
     function sortt($a, $b) {
         return $b['place_in_row'] - $a['place_in_row'];
     };
-
     usort($array, 'sortt');
+
+// print_r($array); 
+$arrayABC = range('A', 'Z');
+//7
+foreach ($array as $key => $value) {
+    $array[$key]['name'] = $arrayABC[rand(0,25)];
+    $array[$key]['surname'] = $arrayABC[rand(0,25)];
+  
+    for ($i = 0; $i< rand(5,15) ; $i++) {
+     $array[$key]['name'] .= $arrayABC[rand(0,25)];
+    }
+    for ($i = 0; $i< rand(5,15) ; $i++) {
+     $array[$key]['surname'] .= $arrayABC[rand(0,25)];
+    }
+   
+}
+
 
 print_r($array); 
