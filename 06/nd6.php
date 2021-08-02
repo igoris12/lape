@@ -38,4 +38,5 @@ print_r($array);
 
     usort($array, 'sortt');
 echo '<br><br><br>';
+
 print_r($array); 
