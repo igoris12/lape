@@ -1,7 +1,5 @@
 <?php
 
-
-
 $array = [];
 $idNumber = rand(1 , 1000000);
 $rowNumber = rand(0 , 100);
@@ -26,22 +24,18 @@ foreach(range(0,29) as $i) {
         $array[$key]["place_in_row"] = $rowNumber;
     }
 
-        
-
-
-  
 //6
 echo '<pre>';
+// sort with usert beters
 sort($array); 
 print_r($array); 
 
-
-
  //6.2
     function sortt($a, $b) {
-        return $b['place_in_row'] - $a['place_in_row'];
+        return $b['place_in_row'] > $a['place_in_row'];
     };
 
-    usort($array, 'sortt');
 
+    usort($array, 'sortt');
+echo '<br><br><br>';
 print_r($array); 

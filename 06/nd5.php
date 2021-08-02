@@ -25,7 +25,7 @@ foreach(range(0,29) as $i) {
         $array[$key]["place_in_row"] = $rowNumber;
     }
 
-        
+    
 
 
 
