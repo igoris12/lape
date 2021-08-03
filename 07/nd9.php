@@ -5,10 +5,7 @@ function funcFilter (int $par) {
     $dalikilis = 2;
     $array = [];
   while ($dalikilis < $par) {
-    //   echo $dalikilis;
       if ($par % $dalikilis == 0) {
-        // echo  "<br>";
-        // echo $dalikilis.'<br>';
         $array [] =$dalikilis;
         $dalikilis++;
     }
@@ -19,29 +16,42 @@ function funcFilter (int $par) {
   return $array;
 }
 
-// function funcRender () {
-//     $array = [];
-//     foreach (range(1,3) as $i) {
-//         $array [] = rand (1,33);
-//     }
-//     return $array;
-// }
-
-
-function func () {
+function funcRender () {
     $array = [];
-    $array2 = [];
     foreach (range(1,3) as $i) {
         $array [] = rand (1,33);
     }
+    return $array;
+}
+
+function funcLook ($array) {
+  
+     foreach ($array as $key =>$value) {
+        if (count(funcFilter($value)) != 0) { 
+            $array[$key] = funcRender();
+        }
+    return $array;
+}
+}
+
+
+
+
+function func () {
+    $array = funcRender();
+     $array2 = [];
+    
     foreach ($array as $key =>$value) {
         if (count(funcFilter($value)) != 0) {
-            if (count(funcFilter($value)) == 0) {
-                return;
-            }
-            // $array[$key] = func();
+            
+            $array[$key] = funcRender();
+            funcLook($array[$key]);
         }
+
+
+
     }
+
 
     return $array;
 }
