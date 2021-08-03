@@ -21,5 +21,26 @@ for ($i = 0; $i< rand(10,20); $i++) {
 return $array;
 }
 
+function look ($array) {
+    static $sum = 0;
+    // echo count($array);
+    for($i = 0; $i < count($array); $i++) {
+        if (gettype($array[$i]) == "integer") {
+            $sum += $array[$i];
+        }
+        else 
+        {
+            look($array[$i]);
+        }
+    }
+    return $sum;
+}
+
+$array = funcH ();
+
+echo look($array);
+
+
 
 echo '<pre>';
+print_r ($array);
