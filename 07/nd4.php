@@ -20,4 +20,4 @@ function func (int $par) {
 
 
 echo '<pre>';
-print_r(func(81111.123123));
+print_r(func(4));

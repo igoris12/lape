@@ -5,7 +5,6 @@ $array =[0];
 $array2 = [];
 $array3 = [];
 
-
 for ($i = 0; $i< rand(10,20); $i++) {
     
    foreach (range(1, rand(10,20)) as $_) {
@@ -39,8 +38,6 @@ function look ($array) {
 $array = funcH ();
 
 echo look($array);
-
-
 
 echo '<pre>';
 print_r ($array);

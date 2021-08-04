@@ -1,7 +1,5 @@
 <?php
 
-
-
 function funcH () {
 $array =[0];
 $array2 = [];
