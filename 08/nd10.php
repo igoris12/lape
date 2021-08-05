@@ -1,17 +1,11 @@
 <?php
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-     echo '<pre>';
-
-print_r ($_POST);
-print_r ($_GET); 
-}
+session_start();
 
 function checkbox() {
 $array = range('A', 'Z');
 $number = rand(3,9);
-    foreach(range(0 , $number) as $key => $value) {
+ $_SESSION['x'] = $number;
+    foreach(range(1 , $number) as $key => $value) {
      echo   "<input type=\"checkbox\" name=\"$key\"> <p>$array[$value]</p>";     
     }
 
@@ -20,11 +14,10 @@ $number = rand(3,9);
 ?>
 
 <?php
-
  if ($_SERVER['REQUEST_METHOD'] == "POST") {
      $kiek = count($_POST);
-     $kiekB = 0;
-     $pTagas = "<p>$kiek buvo $kiekB</p>";
+     $kiekB =  $_SESSION['x'];
+     $pTagas = "<p>$kiek buvo   $kiekB </p>";
 echo "<body style='background: white;'> $pTagas  </body>";
 die;
  }
