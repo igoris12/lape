@@ -1,16 +1,13 @@
 <?php
-
 require __DIR__.'/fuction.php';
+
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
   $arraayy = [rand(1,1000) =>['firsName'=> '', 'lastName'=> '','accountNumber'=> 0,'personKode'=> 0]];
-    setAccount($arraayy);
-   
+    // setAccount($arraayy);
+  setAccount($arraayy);
     header('Location: http://localhost/lape/09/naujaSaskaita.php');
 }
-
- print_r(getAccount());
-
-
+print_r(getAccount()) ;
 ?>
 
 
