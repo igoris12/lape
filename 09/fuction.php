@@ -8,8 +8,6 @@ function getAccount() {
 function setAccount($info): void {
     $array = getAccount();
     $array[] = $info;
-
-
     file_put_contents(__DIR__.'/DuomenųBazė.json',json_encode($array));
  }
 

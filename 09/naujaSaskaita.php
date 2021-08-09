@@ -1,13 +1,15 @@
 <?php
 require __DIR__.'/fuction.php';
-
+echo '<pre>';
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
-  $arraayy = [rand(1,1000) =>['firsName'=> '', 'lastName'=> '','accountNumber'=> 0,'personKode'=> 0]];
-    // setAccount($arraayy);
-  setAccount($arraayy);
+  $arraayy  = ['firsName'=> '', 'lastName'=> '','accountNumber'=> 0,'personKode'=> 0, 'sum'=> 0];
+   setAccount($arraayy);
     header('Location: http://localhost/lape/09/naujaSaskaita.php');
 }
 print_r(getAccount()) ;
+// echo getAccount()[1]['stdClass Object']['accountNumber'];
+
+// echo getAccount()[1][5168]['accountNumber'];
 ?>
 
 
