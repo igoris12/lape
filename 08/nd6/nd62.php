@@ -1,6 +1,5 @@
 <?php
-header('Location: http://localhost/lape/08/nd7/nd61.php');
-die;
+
 ?>
 
 
@@ -12,7 +11,7 @@ die;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>nd6</title>
 </head>
-<body style='background-color: green;'>
+<body style='background-color: yellow;'>
 
     <form action="nd61.php" method="get">
     <input type="submit" value="GET">

@@ -50,7 +50,6 @@ input {
 <button type="submit">CHECK</button>
 <?php 
     checkbox();
-    // <input type="checkbox" name=""> <p>a</p>
 ?>
 
 </form>
