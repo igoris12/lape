@@ -7,6 +7,49 @@
     <title>Bebrų Užtvanka</title>
 
 </head>
+<style>
+    nav {
+        background: gray;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    a {
+           text-decoration: none;
+           color: white; 
+           margin: auto 10px;
+
+    }
+
+       a:hover {
+           color: blue; 
+    }
+
+    div {
+        display: block;
+        margin: 10px ;
+        padding: 15px;
+        border: 2px solid black;
+    }
+    button {
+         display: inline-block;
+       border: 1px solid gray;
+    }
+
+     span {
+         display: inline-block;
+        border: 1px solid gray;
+         
+     }
+
+      p {
+         display: inline-block;
+        border: 1px solid gray;
+         
+     }
+
+    
+</style>
 
 <body>
 <nav>

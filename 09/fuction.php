@@ -33,9 +33,29 @@ function router()
         elseif ('GET' == $_SERVER['REQUEST_METHOD'] &&  'list' == $route) {
             showStartpage();
     }
+
+        elseif ('POST' == $_SERVER['REQUEST_METHOD'] &&  'list' == $route && isset($_GET['id'])) {
+                deleteAcount($_GET['id']);
+    }
+     else {
+        echo 'Page not found 404';
+        die;
+      }
  }
 
 
 function showStartpage() {
      require __DIR__ . '/view/center.php';
+}
+
+function  deleteAcount($id) {
+    $accounts = getAccount();
+    foreach($accounts as $key => &$value) {
+        if ($id == $value['id']) {
+            unset($accounts[$key]);
+            break;
+        }
+    }
+    setAccount($accounts);
+    header('Loction: '.URL);
 }

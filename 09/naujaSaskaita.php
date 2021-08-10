@@ -1,6 +1,6 @@
 <?php
 require __DIR__.'/fuction.php';
-echo '<pre>';
+
 
     if ('POST' == $_SERVER['REQUEST_METHOD']) {
         $array = [
@@ -14,10 +14,6 @@ echo '<pre>';
         setAccount($array);
         header('Location: http://localhost/lape/09/naujaSaskaita.php');
     }
-
-
-print_r(getAccount()) ;
-echo '<br>';
 ?>
 
 
@@ -29,8 +25,36 @@ echo '<br>';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nauja saskaita</title>
 </head>
+
+<style>
+      nav {
+        background: gray;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    a {
+           text-decoration: none;
+           color: white; 
+           margin: auto 10px;
+
+    }
+       a:hover {
+           color: blue; 
+    }
+    form {
+          margin: 10px;
+        
+    }
+</style>
+
 <body>
-    
+<nav>
+    <a href="http://localhost/lape/09/sarasas.php?route=list">List</a>
+    <a href="http://localhost/lape/09/naujaSaskaita.php">New account</a>
+</nav>    
+
+
 <form action="http://localhost/lape/09/naujaSaskaita.php" method="post">
 <label >First Name:</label> <input type="text" name="firstName">
 <label >Last Name:</label><input type="text" name="lastName">
