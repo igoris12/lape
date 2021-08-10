@@ -1,15 +1,26 @@
 <?php
 require __DIR__.'/fuction.php';
 echo '<pre>';
-if ('POST' == $_SERVER['REQUEST_METHOD']) {
-  $arraayy  = ['firsName'=> '', 'lastName'=> '','accountNumber'=> 0,'personKode'=> 0, 'sum'=> 0];
-   setAccount($arraayy);
-    header('Location: http://localhost/lape/09/naujaSaskaita.php');
-}
-print_r(getAccount()) ;
-// echo getAccount()[1]['stdClass Object']['accountNumber'];
 
-// echo getAccount()[1][5168]['accountNumber'];
+echo $_SERVER['REQUEST_METHOD'];
+echo '<br>';
+
+    if ('POST' == $_SERVER['REQUEST_METHOD']) {
+        $array = ['ID' => rand(1,100), 'name' => 'vasokas'];
+        setAccount($array);
+        header('Location: http://localhost/lape/09/naujaSaskaita.php');
+    }
+
+
+print_r(getAccount()) ;
+echo '<br>';
+echo '<br>';
+
+
+
+
+
+
 ?>
 
 
@@ -23,11 +34,11 @@ print_r(getAccount()) ;
 </head>
 <body>
     
-<form action="" method="post">
-<input type="text" name="vardas">
-<input type="text" name="pavarde">
-<input type="text" name="sNumeris">
-<input type="text" name="aKodas">
+<form action="http://localhost/lape/09/naujaSaskaita.php" method="post">
+<input type="text" name="firstName" require>
+<input type="text" name="lastName" require>
+<input type="text" name="acNumber" require>
+<input type="text" name="pesonCode" require>
 
 <button type="submit">Nauja Saskaita</button>
 

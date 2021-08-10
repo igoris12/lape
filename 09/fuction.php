@@ -2,13 +2,23 @@
 
 
 function getAccount() {
-    return json_decode(file_get_contents(__DIR__.'/DuomenųBazė.json'));
+    if (!file_exists(__DIR__.'/data.json')) {
+        $data = [];
+        $data = json_encode($data);
+        file_put_contents(__DIR__.'/data.json', $data);
+
+    }
+
+    return json_decode(file_get_contents(__DIR__.'/data.json'),1);
 }
 
-function setAccount($info): void {
-    $array = getAccount();
-    $array[] = $info;
-    file_put_contents(__DIR__.'/DuomenųBazė.json',json_encode($array));
+
+
+function setAccount(array $info): void {
+    $reInfo = getAccount();
+    $reInfo []= $info;
+    $info= json_encode($reInfo);
+    file_put_contents(__DIR__.'/data.json',$info);
  }
 
  ?>
