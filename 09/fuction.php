@@ -21,4 +21,21 @@ function setAccount(array $info): void {
     file_put_contents(__DIR__.'/data.json',$info);
  }
 
- ?>
+
+
+function router() 
+{
+    $route = $_GET['route'] ?? '';
+        if ('GET' == $_SERVER['REQUEST_METHOD'] &&  '' == $route) {
+            require __DIR__ . '/view/center.php';
+        }
+
+        elseif ('GET' == $_SERVER['REQUEST_METHOD'] &&  'list' == $route) {
+            showStartpage();
+    }
+ }
+
+
+function showStartpage() {
+     require __DIR__ . '/view/center.php';
+}

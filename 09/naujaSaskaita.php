@@ -2,11 +2,15 @@
 require __DIR__.'/fuction.php';
 echo '<pre>';
 
-echo $_SERVER['REQUEST_METHOD'];
-echo '<br>';
-
     if ('POST' == $_SERVER['REQUEST_METHOD']) {
-        $array = ['ID' => rand(1,100), 'name' => 'vasokas'];
+        $array = [
+        'id' => rand(1000000000, 9999999999),
+        'name' => $_POST['firstName'],
+        'lastName' => $_POST['lastName'],
+        'personCode' => $_POST['pesonCode'],
+        'aNumber' => $_POST['acNumber'],
+        'balance' => 0,
+        ];
         setAccount($array);
         header('Location: http://localhost/lape/09/naujaSaskaita.php');
     }
@@ -14,13 +18,6 @@ echo '<br>';
 
 print_r(getAccount()) ;
 echo '<br>';
-echo '<br>';
-
-
-
-
-
-
 ?>
 
 
@@ -35,10 +32,10 @@ echo '<br>';
 <body>
     
 <form action="http://localhost/lape/09/naujaSaskaita.php" method="post">
-<input type="text" name="firstName" require>
-<input type="text" name="lastName" require>
-<input type="text" name="acNumber" require>
-<input type="text" name="pesonCode" require>
+<label >First Name:</label> <input type="text" name="firstName">
+<label >Last Name:</label><input type="text" name="lastName">
+<label >Person Code:</label><input type="text" name="pesonCode">
+<label >Account Number:</label><input type="text" name="acNumber">
 
 <button type="submit">Nauja Saskaita</button>
 
