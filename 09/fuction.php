@@ -14,11 +14,13 @@ function getAccount() {
 
 
 
+
 function setAccount(array $info): void {
     $reInfo = getAccount();
     $reInfo []= $info;
     $info= json_encode($reInfo);
     file_put_contents(__DIR__.'/data.json',$info);
+    
  }
 
 
@@ -48,14 +50,18 @@ function showStartpage() {
      require __DIR__ . '/view/center.php';
 }
 
-function  deleteAcount($id) {
+function  deleteAcount(int $id) {
     $accounts = getAccount();
     foreach($accounts as $key => &$value) {
         if ($id == $value['id']) {
-            unset($accounts[$key]);
+          unset($accounts[$key]);
+        // echo "<pre>";
+        // print_r($accounts);
             break;
         }
     }
-    setAccount($accounts);
-    header('Loction: '.URL);
+        $accounts = json_encode($accounts);
+        file_put_contents(__DIR__.'/data.json',$accounts);
+    header('Location: http://localhost/lape/09/sarasas.php?route=list');
+    die;
 }

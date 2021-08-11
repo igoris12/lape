@@ -7,7 +7,7 @@
 <?php foreach(getAccount() as $account): ?>
     
         <div>
-         <form action="http://localhost/lape/09/sarasas.php?route=list&id=<?= $account['id']?>"
+         <form action="?route=list&id=<?= $account['id']?>"
              method="post">
              <button type="submit">delete</button>
          </form>
