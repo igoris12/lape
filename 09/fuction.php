@@ -1,6 +1,5 @@
 <?php
 
-
 function getAccount() {
     if (!file_exists(__DIR__.'/data.json')) {
         $data = [];
@@ -12,9 +11,6 @@ function getAccount() {
     return json_decode(file_get_contents(__DIR__.'/data.json'),1);
 }
 
-
-
-
 function setAccount(array $info): void {
     $reInfo = getAccount();
     $reInfo []= $info;
@@ -22,8 +18,6 @@ function setAccount(array $info): void {
     file_put_contents(__DIR__.'/data.json',$info);
     
  }
-
-
 
 function router() 
 {
@@ -36,6 +30,29 @@ function router()
             showStartpage();
     }
 
+            elseif ('GET' == $_SERVER['REQUEST_METHOD'] &&  'add' == $route && isset($_GET['id'])) {
+          require __DIR__ . '/view/top.php';
+          require __DIR__ . '/view/add.php';
+          require __DIR__ . '/view/bottom.php';
+    }   
+              elseif ('POST' == $_SERVER['REQUEST_METHOD'] &&  'add' == $route && isset($_GET['id'])) {
+          require __DIR__ . '/view/top.php';
+          require __DIR__ . '/view/add.php';
+          require __DIR__ . '/view/bottom.php';
+    }   
+
+            elseif ('POST' == $_SERVER['REQUEST_METHOD'] &&  'subtract' == $route && isset($_GET['id'])) {
+          require __DIR__ . '/view/top.php';
+          require __DIR__ . '/view/subtract.php';
+          require __DIR__ . '/view/bottom.php';
+    }
+
+          elseif ('GET' == $_SERVER['REQUEST_METHOD'] &&  'subtract' == $route && isset($_GET['id'])) {
+          require __DIR__ . '/view/top.php';
+          require __DIR__ . '/view/subtract.php';
+          require __DIR__ . '/view/bottom.php';
+    }
+
         elseif ('POST' == $_SERVER['REQUEST_METHOD'] &&  'list' == $route && isset($_GET['id'])) {
                 deleteAcount($_GET['id']);
     }
@@ -45,7 +62,6 @@ function router()
       }
  }
 
-
 function showStartpage() {
      require __DIR__ . '/view/center.php';
 }
@@ -53,10 +69,8 @@ function showStartpage() {
 function  deleteAcount(int $id) {
     $accounts = getAccount();
     foreach($accounts as $key => &$value) {
-        if ($id == $value['id']) {
-          unset($accounts[$key]);
-        // echo "<pre>";
-        // print_r($accounts);
+        if ($id == $value['id'] && $value['balance'] == 0) {
+            unset($accounts[$key]);
             break;
         }
     }
@@ -65,3 +79,49 @@ function  deleteAcount(int $id) {
     header('Location: http://localhost/lape/09/sarasas.php?route=list');
     die;
 }
+
+function addMoney(int $money, $id) {
+    $accounts = getAccount();
+    foreach($accounts as &$value) {
+     if ($value['id'] == $id) {
+         $value['balance'] += $money;
+         break;
+     }
+
+    }
+    $accounts = json_encode($accounts);
+    file_put_contents(__DIR__.'/data.json',$accounts);
+}
+
+function subtractMoney($money, $id) {
+        $accounts = getAccount();
+    foreach($accounts as &$value) {
+     if ($value['id'] == $id) {
+         $value['balance'] -= $money;
+         if ($value['balance'] < 0) {
+             $value['balance'] = 0;
+         }
+         break;
+     }
+
+    }
+    $accounts = json_encode($accounts);
+    file_put_contents(__DIR__.'/data.json',$accounts);
+}
+
+// function numberCheck ($number) {
+//     $array = range('0-9');
+//     $rez = false;
+//     $lenght = strlen($number);
+//      foreach (range(0, $lenght) as $value) {
+//          foreach ($array as $i) {
+//              if($number[$value] == $i) {
+//                 $rez =true;
+//              }else {
+//                  $rez = false;
+//                  return $rez;
+//              }
+//          }
+//      }
+//      return $rez;
+// }

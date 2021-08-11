@@ -31,20 +31,26 @@
         padding: 15px;
         border: 2px solid black;
     }
+
+
+
     button {
-         display: inline-block;
+       display: inline-block;
        border: 1px solid gray;
     }
 
      span {
          display: inline-block;
         border: 1px solid gray;
-         
+         margin: 5px 0 10px;
+         padding: 5px;
      }
 
       p {
          display: inline-block;
         border: 1px solid gray;
+        margin: 5px 0  10px;
+        padding: 5px;
          
      }
 

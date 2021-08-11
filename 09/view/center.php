@@ -11,6 +11,17 @@
              method="post">
              <button type="submit">delete</button>
          </form>
+
+           <form action="?route=add&id=<?= $account['id']?>"
+             method="post">
+             <button type="submit">Add money</button>
+         </form>
+
+           <form action="?route=subtract&id=<?= $account['id']?>"
+             method="post">
+             <button type="submit">Subtract money</button>   
+         </form>
+
         <span>ID: <?= $account['id']?></span>
         <span>Acount number: <?= $account['aNumber']?> </span>
         <p>Name: <?= $account['name']?></p>

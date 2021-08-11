@@ -17,43 +17,8 @@ require __DIR__.'/fuction.php';
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nauja saskaita</title>
-</head>
-
-<style>
-      nav {
-        background: gray;
-        margin: 10px;
-        padding: 10px;
-    }
-
-    a {
-           text-decoration: none;
-           color: white; 
-           margin: auto 10px;
-
-    }
-       a:hover {
-           color: blue; 
-    }
-    form {
-          margin: 10px;
         
-    }
-</style>
-
-<body>
-<nav>
-    <a href="http://localhost/lape/09/sarasas.php?route=list">List</a>
-    <a href="http://localhost/lape/09/naujaSaskaita.php">New account</a>
-</nav>    
-
+<?=require __DIR__ . '/view/top.php'?>
 
 <form action="http://localhost/lape/09/naujaSaskaita.php" method="post">
 <label >First Name:</label> <input type="text" name="firstName">
