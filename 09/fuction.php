@@ -7,13 +7,18 @@ function getAccount() {
         file_put_contents(__DIR__.'/data.json', $data);
 
     }
+    $accounts = json_decode(file_get_contents(__DIR__.'/data.json'),1);
+    usort($accounts, 'accountSort');
 
-    return json_decode(file_get_contents(__DIR__.'/data.json'),1);
+    return $accounts;
 }
 
 function setAccount(array $info): void {
     $reInfo = getAccount();
     $reInfo []= $info;
+
+    usort($reInfo, 'accountSort');
+
     $info= json_encode($reInfo);
     file_put_contents(__DIR__.'/data.json',$info);
     
@@ -143,6 +148,6 @@ function accountNumberControl() :void {
     }
 }
 
-function personCode() {
-
+function accountSort($a, $b) {
+     return strtoupper($b['lastName']) < strtoupper($a['lastName']);
 }

@@ -6,7 +6,11 @@ require __DIR__.'/fuction.php';
         if (is_numeric($_POST['pesonCode']) &&
         strlen($_POST['pesonCode']) == 11&&
         strlen($_POST['firstName'])> 3 && 
-        strlen($_POST['lastName'])> 3 ) {
+        strlen($_POST['lastName'])> 3&& 
+        $_POST['pesonCode'][0]== 3 ||
+        $_POST['pesonCode'][0]== 4 ||
+        $_POST['pesonCode'][0]== 5 ||
+        $_POST['pesonCode'][0]== 6 ) {
             
             accountNumberControl();
         $array = [
