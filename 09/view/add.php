@@ -4,9 +4,9 @@
   if ("POST" == $_SERVER['REQUEST_METHOD']) {
 
     addMoney($_POST['add'],$_GET["id"]);
-    //  header("Location: http://localhost/lape/09/sarasas.php?route=add&id=$_GET[id]");
-    // die;
-    }
+      header("Location: http://localhost/lape/09/sarasas.php?route=add&id=$_GET[id]");
+      die;
+      }
     }
   
 

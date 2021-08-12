@@ -80,48 +80,69 @@ function  deleteAcount(int $id) {
     die;
 }
 
-function addMoney(int $money, $id) {
+function addMoney( $money, $id): void {
+  
     $accounts = getAccount();
-    foreach($accounts as &$value) {
-     if ($value['id'] == $id) {
-         $value['balance'] += $money;
-         break;
-     }
-
-    }
+    if (is_numeric($money)) {
+        foreach($accounts as &$value) {
+            if ($value['id'] == $id) {
+            $value['balance'] += $money;
+            break;
+            }
+        }
+    }else {
+            echo "<h1>aaaaaaaaaaaaaaaaaa</h1>";
+        }
     $accounts = json_encode($accounts);
     file_put_contents(__DIR__.'/data.json',$accounts);
 }
 
 function subtractMoney($money, $id) {
         $accounts = getAccount();
-    foreach($accounts as &$value) {
-     if ($value['id'] == $id) {
-         $value['balance'] -= $money;
-         if ($value['balance'] < 0) {
-             $value['balance'] = 0;
-         }
-         break;
-     }
+        if (is_numeric($money)) {
+            foreach($accounts as &$value) {
+            if ($value['id'] == $id) {
+            $value['balance'] -= $money;
 
-    }
+                if ($value['balance'] < 0) {
+                $value['balance'] = 0;
+                }
+            break;
+            }
+            
+         }
+        }
+  
     $accounts = json_encode($accounts);
     file_put_contents(__DIR__.'/data.json',$accounts);
 }
 
-// function numberCheck ($number) {
-//     $array = range('0-9');
-//     $rez = false;
-//     $lenght = strlen($number);
-//      foreach (range(0, $lenght) as $value) {
-//          foreach ($array as $i) {
-//              if($number[$value] == $i) {
-//                 $rez =true;
-//              }else {
-//                  $rez = false;
-//                  return $rez;
-//              }
-//          }
-//      }
-//      return $rez;
-// }
+function acountNumber() {
+    $acountNumber = 'LT1873000';
+   
+    for($i =0; $i<11; $i++) {
+    $number=rand(0,9); 
+      $acountNumber = $acountNumber.$number;
+    }
+  
+    return $acountNumber;
+}
+
+function accountNumberControl() :void {
+     if (!getAccount() == []) {
+            $accounts = getAccount();
+
+            foreach ($accounts as $key => $value) {
+                for ($i=0; $i<count($accounts); $i++) {
+                if ($accounts[$key]['aNumber'] == $_POST['acNumber']) {
+                    $_POST['acNumber'] = acountNumber();
+                    $i=0;
+                }
+            }
+        }    
+    }
+}
+
+function personCode() {
+
+}
