@@ -10,6 +10,16 @@
 
 </head>
 <style>
+
+    form {
+        width: 50%;
+        margin-left: 25%;
+    }
+    
+    .form {
+    
+    }
+
     nav {
         background: gray;
         margin: 10px;
@@ -27,19 +37,10 @@
            color: blue; 
     }
 
-    div {
-        display: block;
-        margin: 10px ;
-        padding: 15px;
-        border: 2px solid black;
+    input {
+        margin-bottom: 10px;
     }
 
-
-
-    button {
-       display: inline-block;
-       border: 1px solid gray;
-    }
 
      span {
          display: inline-block;
