@@ -74,15 +74,26 @@ function showStartpage() {
 function  deleteAcount(int $id) {
     $accounts = getAccount();
     foreach($accounts as $key => &$value) {
-        if ($id == $value['id'] && $value['balance'] == 0) {
-            unset($accounts[$key]);
-            break;
+        if ($value['balance'] == 0) {
+            if ($id == $value['id']) {
+                unset($accounts[$key]);
+                addMassage('warning', "Account ID:$id was deleted.");
+                header('Location: http://localhost/lape/09/sarasas.php?route=list');
+                break;
+                die;
+            }
+
+        }else {
+            addMassage('warning', "Can't delete account with money on balance.");
+            header('Location: http://localhost/lape/09/sarasas.php?route=list');
+            die;
         }
+        
     }
         $accounts = json_encode($accounts);
         file_put_contents(__DIR__.'/data.json',$accounts);
-    header('Location: http://localhost/lape/09/sarasas.php?route=list');
-    die;
+        header('Location: http://localhost/lape/09/sarasas.php?route=list');
+        die;
 }
 
 function addMoney( $money, $id): void {
@@ -91,13 +102,16 @@ function addMoney( $money, $id): void {
     if (is_numeric($money)) {
         foreach($accounts as &$value) {
             if ($value['id'] == $id) {
+                addMassage('success', "Operation was successful you add $money EUR.");
+                header('Location: http://localhost/lape/09/sarasas.php?route=add&id=3826301052');
             $value['balance'] += $money;
             break;
             }
         }
     }else {
-            echo "<h1>aaaaaaaaaaaaaaaaaa</h1>";
-        }
+            addMassage('danger', "Not correct input try again '$money' use jsut <b>numbers</b>.");
+            header('Location: http://localhost/lape/09/sarasas.php?route=add&id=3826301052');
+    }
     $accounts = json_encode($accounts);
     file_put_contents(__DIR__.'/data.json',$accounts);
 }
@@ -107,17 +121,23 @@ function subtractMoney($money, $id) {
         if (is_numeric($money)) {
             foreach($accounts as &$value) {
             if ($value['id'] == $id) {
-            $value['balance'] -= $money;
-
-                if ($value['balance'] < 0) {
-                $value['balance'] = 0;
+                if ($value['balance'] - $money <0 ) {
+                    addMassage('danger', 'Not enough money on account.');
+                    header('Location: http://localhost/lape/09/sarasas.php?route=subtract&id=3826301052');
+                }else {
+                    addMassage('success', "Operation was successful you take $money EUR.");
+                    header('Location: http://localhost/lape/09/sarasas.php?route=subtract&id=3826301052');
+                    $value['balance'] -= $money;
+                    break;
+                    }
+                    
                 }
-            break;
-            }
             
-         }
-        }
-  
+            }
+        } else {
+            addMassage('danger', "Not correct input try again '$money' use jsut <b>numbers</b>.");
+            header('Location: http://localhost/lape/09/sarasas.php?route=add&id=3826301052');
+    }
     $accounts = json_encode($accounts);
     file_put_contents(__DIR__.'/data.json',$accounts);
 }
@@ -136,7 +156,6 @@ function acountNumber() {
 function accountNumberControl() :void {
      if (!getAccount() == []) {
             $accounts = getAccount();
-
             foreach ($accounts as $key => $value) {
                 for ($i=0; $i<count($accounts); $i++) {
                 if ($accounts[$key]['aNumber'] == $_POST['acNumber']) {
@@ -151,10 +170,11 @@ function accountNumberControl() :void {
 function personCodeControl() :void {
      if (!getAccount() == []) {
             $accounts = getAccount();
-
             foreach ($accounts as $key => $value) {
                 for ($i=0; $i<count($accounts); $i++) {
-                if ($accounts[$key]['personCode'] == $_POST['pesonCode']) {
+                if ($accounts[$key]['personCode'] == $_POST['pesonCode']
+                ) {
+                    addMassage('danger', 'First name and last name must be longer then 3 symbols and check personal code.');
                     header('Location: http://localhost/lape/09/naujaSaskaita.php');
                     die;
                 }
@@ -163,6 +183,49 @@ function personCodeControl() :void {
     }
 }
 
+function personCodeStartControl($code) {
+    return ($code[0] == 3 || $code[0] == 4 || $code[0] == 5 || $code[0] == 6 ) ? true : false;
+}
+
 function accountSort($a, $b) {
      return strtoupper($b['lastName']) < strtoupper($a['lastName']);
+}
+
+function nameControl(string $name){
+   return strlen($name) >= 3 ? true : false; 
+}
+
+function nameNumberControl(string $name){
+    for ($i = 0; $i< strlen($name); $i++) {
+        if (
+        $name[$i] == "0" || $name[$i] == "1" ||
+        $name[$i] == "2" || $name[$i] == "3" ||
+        $name[$i] == "4" || $name[$i] == "5" ||
+        $name[$i] == "6" || $name[$i] == "7" ||
+        $name[$i] == "8" || $name[$i] == "9" ||
+         $name[$i] == " " 
+         ) {
+            return false;
+        }
+    }
+   return true; 
+}
+
+// NOTES
+
+function addMassage(string $type, string $msg) : void {
+    $_SESSION['msg'][]= ['type' => $type, 'msg' => $msg];
+}
+
+function clearMessage(): void {
+    $_SESSION['msg'] = [];
+}
+
+function showMessage(): void {
+    if (isset($_SESSION['msg'])) {
+    $message = $_SESSION['msg'];
+    clearMessage();
+    require __DIR__.'/view/msg.php';
+    }
+    
 }

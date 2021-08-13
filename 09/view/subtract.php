@@ -2,8 +2,8 @@
 $test =$_POST['subtract'] ?? '';
 if (!$test == '') {
     if ("POST" == $_SERVER['REQUEST_METHOD']) {
-            subtractMoney($_POST['subtract'],$_GET["id"]);
-     header("Location: http://localhost/lape/09/sarasas.php?route=subtract&id=$_GET[id]");
+    subtractMoney($_POST['subtract'],$_GET["id"]);
+    header("Location: http://localhost/lape/09/sarasas.php?route=subtract&id=$_GET[id]");
     die;
     }
 }

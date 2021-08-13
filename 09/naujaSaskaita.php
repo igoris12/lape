@@ -1,19 +1,19 @@
 <?php
+session_start();
 require __DIR__.'/fuction.php';
-
-
+$array = [];
     if ('POST' == $_SERVER['REQUEST_METHOD']) {
-        if (is_numeric($_POST['pesonCode']) &&
-        strlen($_POST['pesonCode']) == 11&&
-        strlen($_POST['firstName'])> 3 && 
-        strlen($_POST['lastName'])> 3&& 
-        $_POST['pesonCode'][0]== 3 ||
-        $_POST['pesonCode'][0]== 4 ||
-        $_POST['pesonCode'][0]== 5 ||
-        $_POST['pesonCode'][0]== 6 ) {
-            
-            accountNumberControl();
-            personCodeControl();
+        if (
+        is_numeric($_POST['pesonCode']) &&
+        strlen($_POST['pesonCode']) == 11 &&
+        nameControl($_POST['firstName'])&&
+        nameControl($_POST['lastName']) &&
+        nameNumberControl($_POST['firstName']) &&
+        nameNumberControl($_POST['lastName']) &&
+        personCodeStartControl($_POST['pesonCode'])
+        ) {
+        accountNumberControl();
+        personCodeControl();
         $array = [
         'id' => rand(1000000000, 9999999999),
         'name' => $_POST['firstName'],
@@ -24,10 +24,14 @@ require __DIR__.'/fuction.php';
         ];
         setAccount($array);
         
-
+        addMassage('success', 'New account has ben created');
+        }
+        if ($array== []) {
+            addMassage('danger', 'First name and last name must be longer then 3 symbols, first and last name must not have spaces and numbers, check personal code.');
         }
         header('Location: http://localhost/lape/09/naujaSaskaita.php');
         die;
+
     }
 ?>
 
