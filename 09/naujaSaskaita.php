@@ -13,6 +13,7 @@ require __DIR__.'/fuction.php';
         $_POST['pesonCode'][0]== 6 ) {
             
             accountNumberControl();
+            personCodeControl();
         $array = [
         'id' => rand(1000000000, 9999999999),
         'name' => $_POST['firstName'],

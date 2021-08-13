@@ -148,6 +148,21 @@ function accountNumberControl() :void {
     }
 }
 
+function personCodeControl() :void {
+     if (!getAccount() == []) {
+            $accounts = getAccount();
+
+            foreach ($accounts as $key => $value) {
+                for ($i=0; $i<count($accounts); $i++) {
+                if ($accounts[$key]['personCode'] == $_POST['pesonCode']) {
+                    header('Location: http://localhost/lape/09/naujaSaskaita.php');
+                    die;
+                }
+            }
+        }    
+    }
+}
+
 function accountSort($a, $b) {
      return strtoupper($b['lastName']) < strtoupper($a['lastName']);
 }
