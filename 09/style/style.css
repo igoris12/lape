@@ -1,0 +1,50 @@
+.btn {
+  display: inline-block;
+  border: 1px solid black;
+  background-color: rgb(162, 182, 199);
+  border-radius: 5px;
+  padding: 5px;
+  width: 130px;
+  margin-right: 5px;
+}
+
+.btn:hover {
+  background-color: rgb(61, 32, 138);
+  color: white;
+}
+
+.btnContainer {
+  display: inline-block;
+  width: 100%;
+}
+
+form {
+  display: inline-block;
+  margin: 10px;
+}
+
+.container {
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.infoContainer {
+  margin: 0 10px 0 10px;
+}
+
+span {
+  border-radius: 5px;
+  display: inline-block;
+  border: 1px solid gray;
+  margin: 5px 0 10px;
+  padding: 5px;
+}
+
+p {
+  border-radius: 5px;
+  display: inline-block;
+  border: 1px solid gray;
+  margin: 5px 0 10px;
+  padding: 5px;
+}
