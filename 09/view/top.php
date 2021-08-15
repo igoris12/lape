@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,6 +43,8 @@
 <nav>
     <a href="http://localhost/lape/09/sarasas.php?route=list">List</a>
     <a href="http://localhost/lape/09/naujaSaskaita.php">New account</a>
+     <!-- <a href="http://localhost/lape/09/view/home.php">Home</a> -->
+     <!-- <a href="http://localhost/lape/09/view/login.php">Login</a> -->
 </nav>
 
 <?php showMessage() ?>
