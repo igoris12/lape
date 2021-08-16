@@ -1,6 +1,6 @@
 <?php
-$test =$_POST['subtract'] ?? '';
-if (!$test == '') {
+
+if (isset($_POST['subtract'])) {
     if ("POST" == $_SERVER['REQUEST_METHOD']) {
     subtractMoney($_POST['subtract'],$_GET["id"]);
     header("Location: http://localhost/lape/09/sarasas.php?route=subtract&id=$_GET[id]");

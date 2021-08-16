@@ -1,6 +1,6 @@
 <?php
- $test =$_POST['add'] ?? '';
-    if (!$test == '') {
+
+    if (isset($_POST['add'])) {
   if ("POST" == $_SERVER['REQUEST_METHOD']) {
     addMoney($_POST['add'],$_GET["id"]);
     header("Location: http://localhost/lape/09/sarasas.php?route=add&id=$_GET[id]");
