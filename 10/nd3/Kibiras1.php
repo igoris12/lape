@@ -6,13 +6,13 @@ class Kibiras1 {
 
     public function prideti1Akmeni() {
         $this->akmenuKiekis++;
-       self:: $akmenuKiekisVisuoseKibiruose++;
+        self:: $akmenuKiekisVisuoseKibiruose++;
 
     }
 
     public function pridetiDaugAkmenu(int $kiekis) {
         $this->akmenuKiekis += $kiekis;
-       self:: $akmenuKiekisVisuoseKibiruose += $kiekis;
+        self:: $akmenuKiekisVisuoseKibiruose += $kiekis;
     }
 
     public function kiekPririnktaAkmenu() {
