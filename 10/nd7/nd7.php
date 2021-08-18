@@ -7,7 +7,7 @@ require __DIR__ .'/Grybas.php';
 echo '<pre>';
 $krepsys = new Krepsys;
 
-$num = 0;
+
 do {
     
     $grybas = new Grybas;
@@ -15,7 +15,6 @@ do {
     
         $krepsys->deti($grybas);
    
-    $num ++;
 } While($krepsys->kiekis < $krepsys->dydis);
 
 

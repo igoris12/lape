@@ -2,7 +2,7 @@
  require __DIR__ . '/Kibiras1.php';
 
  $Kibiras = new Kibiras1;
-echo '<p`re>'; 
+echo '<pre>'; 
 
 //  $Kibiras->prideti1Akmeni();
 
