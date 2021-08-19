@@ -32,7 +32,6 @@ class Tenisininkas {
          if (self::$zaidejas1->arTuriKamuoliuka()) {
              echo '<br>';
              echo '<br>';
-
              self::$zaidejas1->kamuoliukas = false;
              self::$zaidejas2->kamuoliukas = true;
              var_dump(self::$zaidejas1);
@@ -85,11 +84,5 @@ class Tenisininkas {
     public function name($prop) {
         $this->vardas = $prop;
     } 
-
-    // public function __get($prop) {
-    //    return $this->$prop;
-    // }
-
-
 
 }
