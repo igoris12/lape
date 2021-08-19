@@ -8,19 +8,20 @@
 </head>
 <body>
     <nav>
-        <a href="#">Creat new account</a>
-        <a href="#">List</a>
+        <a href="http://localhost/lape/OOP%20bank/views/creatNewAcount.php">Creat new account</a>
+        <a href="http://localhost/lape/OOP%20bank/views/list.php">List</a>
 
     </nav>
 
     <style>
+        
     body {
         margin: 20px;
     }
 
     nav {
         background: gray;
-        margin: 10px;
+        margin-bottom: 10px;
         padding: 10px;
     }
 
