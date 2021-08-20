@@ -8,9 +8,9 @@
 </head>
 <body>
     <nav>
-        <a href="http://localhost/lape/OOP%20bank/views/creatNewAcount.php">Creat new account</a>
-        <a href="http://localhost/lape/OOP%20bank/views/list.php">List</a>
-
+        <a href="http://localhost/lape/BankOOP/public/">home</a>
+        <a href="http://localhost/lape/BankOOP/views/list.php">List</a>
+        <a href="http://localhost/lape/BankOOP/views/creatNewAcount.php">Creat new account</a>
     </nav>
 
     <style>
