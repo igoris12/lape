@@ -55,13 +55,13 @@
     <div class='container'>
     <div class='containerBtn'>
             <div class='btnContainer'>
-            <form action="?route=list&id=<?= $account['id']?>" method="post">
+            <form action="?route=delete&id=<?= $account['id']?>" method="post">
                 <button type="submit" class='btn'>delete</button>
             </form>
             <form action="?route=add&id=<?= $account['id']?>" method="post">
                 <button type="submit" class='btn'>Add money</button>
             </form>
-        <form action="?route=subtract&id=<?= $account['id']?>" method="post">
+        <form action="?route=sub&id=<?= $account['id']?>" method="post">
             <button type="submit" class='btn'>Subtract money</button>   
         </form>
     </div>

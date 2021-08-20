@@ -1,13 +1,5 @@
     
-<?php
-    // require 'C:\xampp\htdocs\lape\BankOOP\app/DataBase.php';
-    // require 'C:\xampp\htdocs\lape\BankOOP\app/BankControl.php';
-    // require 'C:\xampp\htdocs\lape\BankOOP\app/Router.php';
-    // $aa = new Router;
-    // $aa->roter();
-    $bank = new BankControl;
-
-    ?>
+<?php $bank = new BankControl;?>
 
 
   <?php foreach ($bank->showAll() as $account) :?>
@@ -23,7 +15,7 @@
 
             <form action="?route=transfer&id=<?= $account['id']?>" method="post">
                 <input  type="text" name="money" placeholder="0">
-                <button type="submit" class='btn'>delete</button>
+                <button type="submit" >Add money</button>
             </form>
     <?php endif ?>
 

@@ -15,35 +15,57 @@ class BankControl implements DataBase {
         file_put_contents(__DIR__.'/data.json',$userData);
     }
 
-    
+    public function a($a) {
+        $userData= json_encode($a);
+        file_put_contents(__DIR__.'/data.json',$userData);
+    }
+
     
     //
     function update(int $userId, array $userData) : void {
 
-        $accounts   = $userData;
-
-         foreach ($accounts as $account) {
+        $accounts  = $userData;
+        if ($_GET['route'] == 'add') {
+             foreach ($accounts as $account) {
             if ($account['id'] == $userId) {
                 $account['balance'] += $_POST['money'];
-                
             }
         }
-      
-        $this->create($account);
-  
+        $accounts = json_encode($accounts);
+        file_put_contents(__DIR__.'/data.json',$accounts);
+        }
+        elseif ($_GET['route'] == 'subtract') {
+           foreach ($accounts as $key => $account) {
+            if ($account['id'] == $userId) {
+                $account['balance'] -= $_POST['money'];
+                break;
+            }
+           }
+         
+        }
 
-          
+       
+       
     }
-    //
+    //+
     function delete(int $userId) : void {
-        
+        $accounts = $this->showAll();
+
+        foreach ($accounts as $key => $account) {
+            if ($account['id'] == $userId) {
+                unset($accounts[$key]);
+                break;
+            }
+        }
+        $accounts = json_encode($accounts);
+        file_put_contents(__DIR__.'/data.json',$accounts);
     }
     //
     function show(int $userId) : array {
 
         return [];
     }
-    //
+    //+
     function showAll() : array {
         if (!file_exists(__DIR__.'/data.json')) {
         $data = [];
