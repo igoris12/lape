@@ -22,23 +22,27 @@ $bank = new BankControl;
         'balance' => 0,
         ];
       $bank->create($array);
-
-     
-    //  echo '<pre>';
-    //  print_r($bank->look());
       header('Location: http://localhost/lape/BankOOP/views/creatNewAcount.php');
       die;
     }
 
 ?>
 
+<div class='containerr'>
+  <div class="creatContainer">
+    <form action="http://localhost/lape/BankOOP/views/creatNewAcount.php?route=creat" method="post">
+      <div class='inputContent'>
+        <label >Nmae: </label><input  type="text" name="firstName" placeholder="First name">
+        <label >Last name: </label><input  type="text" name="lastName" placeholder="Last name">
+        <label >Personal code: </label><input  type="text" name="pesonCode" placeholder="Personal code">
+        <label >Nr: </label><input  type="text" name="acNumber" value="LT:">
+      </div>
+      
+      <button type="submit">Nauja Saskaita</button>
+    </form>
+  </div>
+  
+</div>
 
-<form action="http://localhost/lape/BankOOP/views/creatNewAcount.php?route=creat" method="post">
-<input  type="text" name="firstName" placeholder="First name">
-<input  type="text" name="lastName" placeholder="Last name">
-<input  type="text" name="pesonCode" placeholder="Personal code">
-<input  type="text" name="acNumber" value="LT:">
-<button type="submit">Nauja Saskaita</button>
-</form>
 
 <?php require __DIR__ . '/bottom.php' ?>

@@ -4,19 +4,25 @@
 
   <?php foreach ($bank->showAll() as $account) :?>
     <?php if ($account['id'] == $_GET['id']) :?>
-        <div class='infoContainer'>
-            <span>ID: <?= $account['id']?></span>
-            <span>Acount number: <?= $account['aNumber']?> </span>
-            <p>Name: <?= $account['name']?></p>
-            <p>Lastname: <?= $account['lastName']?></p>
-            <p>Person Code: <?= $account['personCode']?> </p>
-            <p>Balance:<?= $account['balance']?> EUR</p>
-        </div>
 
-            <form action="?route=transfer&id=<?= $account['id']?>" method="post">
-                <input  type="text" name="money" placeholder="0">
-                <button type="submit" >Add money</button>
-            </form>
+        <div class='containerr'>
+            <div class='actionForm'>
+                <form action="?route=add&id=<?= $account['id']?>" method="post">
+                    <input  type="text" name="money" placeholder="0">
+                    <button type="submit" >Add money</button>
+                </form>
+            </div>
+            <div class='infoContainer'>
+                <span class='item'><b>ID:</b> <?= $account['id']?></span>
+                <span class='item'><b>Acount number:</b> <?= $account['aNumber']?> </span>
+                <p class='item'><b>Name:</b> <?= $account['name']?></p>
+                <p class='item'><b>Lastname:</b> <?= $account['lastName']?></p>
+                <p class='item'><b>Person Code:</b> <?= $account['personCode']?> </p>
+                <p class='item'><b>Balance:</b> <?= $account['balance']?> EUR</p>
+            </div>
+            
+        </div>
+        
     <?php endif ?>
 
     <?php endforeach ?>
