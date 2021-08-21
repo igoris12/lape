@@ -21,11 +21,12 @@ class BankControl implements DataBase {
     }
 
     
-    // validacija 
+    // messange
     function update(int $userId, array $userData) : void {
 
         $accounts  = $userData;
-            if ($_GET['route'] == 'add') {
+
+        if ($_GET['route'] == 'add'  && is_numeric($_POST['money'])) {
             foreach ($accounts as &$account) {
                 if ($account['id'] == $userId) {
                 $account['balance'] += $_POST['money'];
@@ -33,7 +34,7 @@ class BankControl implements DataBase {
             }
         }
 
-        if ($_GET['route'] == 'subtract') {
+        if ($_GET['route'] == 'subtract' && is_numeric($_POST['money'])) {
            foreach ($accounts as  &$account) {
                 if ($account['id'] == $userId) {
                 $account['balance'] -= $_POST['money'];
@@ -43,23 +44,39 @@ class BankControl implements DataBase {
         $accounts = json_encode($accounts);
         file_put_contents(__DIR__.'/data.json',$accounts);
     }
-    // validacija 
+
+
+// massages
     function delete(int $userId) : void {
         $accounts = $this->showAll();
 
         foreach ($accounts as $key => $account) {
-            if ($account['id'] == $userId) {
+            if ($account['balance'] == 0) {
+               if ($account['id'] == $userId) {
                 unset($accounts[$key]);
                 break;
+                } 
             }
+            
         }
         $accounts = json_encode($accounts);
         file_put_contents(__DIR__.'/data.json',$accounts);
     }
-    //
-    function show(int $userId) : array {
 
-        return [];
+
+
+
+
+
+
+    //+
+    function show(int $userId) : array {
+        $accounts = $this->showAll();
+        foreach($accounts as $account) {
+            if ($account['id'] == $userId) {
+                return $account;
+            }
+        }
     }
     //+ 
     function showAll() : array {
@@ -73,6 +90,33 @@ class BankControl implements DataBase {
     return $accounts;
       
     }
-    
+
+    // creat calidation 
+    public function addNewAccountCintrol(): array {
+        $array = [];
+        if ('POST' == $_SERVER['REQUEST_METHOD']) {
+            if (
+            is_numeric($_POST['pesonCode']) &&
+            strlen($_POST['pesonCode']) == 11 &&
+            nameControl($_POST['firstName'])&&
+            nameControl($_POST['lastName']) &&
+            nameNumberControl($_POST['firstName']) &&
+            nameNumberControl($_POST['lastName']) &&
+            personCodeStartControl($_POST['pesonCode'])
+            ) {
+            // accountNumberControl();
+            // personCodeControl();
+            $array = [
+            'id' => rand(1000000000, 9999999999),
+            'name' => $_POST['firstName'],
+            'lastName' => $_POST['lastName'],
+            'personCode' => $_POST['pesonCode'],
+            'aNumber' => $_POST['acNumber'],
+            'balance' => 0,
+            ];
+            return $array;
+            }
+        }
+    } 
 }
     
