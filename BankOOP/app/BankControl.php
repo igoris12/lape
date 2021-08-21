@@ -25,22 +25,28 @@ class BankControl implements DataBase {
     function update(int $userId, array $userData) : void {
 
         $accounts  = $userData;
-        if ($_GET['route'] == 'add') {
-             foreach ($accounts as $account) {
-            if ($account['id'] == $userId) {
-                $account['balance'] += $_POST['money'];
-            }
-        }
-        $accounts = json_encode($accounts);
-        file_put_contents(__DIR__.'/data.json',$accounts);
-        }
-        elseif ($_GET['route'] == 'subtract') {
+        // if ($_GET['route'] == 'add') {
+        //      foreach ($accounts as $account) {
+        //     if ($account['id'] == $userId) {
+        //         $account['balance'] += $_POST['money'];
+        //     }
+        // }
+        // $accounts = json_encode($accounts);
+        // file_put_contents(__DIR__.'/data.json',$accounts);
+        // }
+        if ($_GET['route'] == 'subtract') {
            foreach ($accounts as $key => $account) {
             if ($account['id'] == $userId) {
                 $account['balance'] -= $_POST['money'];
-                break;
             }
+            echo '<pre>';
+            print_r($account);
+            echo '<br>';
+            
            }
+        print_r($accounts);  
+        $accounts = json_encode($accounts);
+        file_put_contents(__DIR__.'/data.json',$accounts);
          
         }
 
