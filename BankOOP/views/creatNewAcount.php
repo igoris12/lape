@@ -11,17 +11,20 @@ $bank = new BankControl;
     $route = $_GET['route'] ?? '';
 
     if ('POST' == $_SERVER['REQUEST_METHOD'] && $route == 'creat' ) {
-
-       $array = [];
-        $array = [
+// addNewAccountCintrol()
+      if ($bank->addNewAccountCintrol()) {
+        $array = [];
+         $array = [
         'id' => rand(1000000000, 9999999999),
         'name' => $_POST['firstName'],
         'lastName' => $_POST['lastName'],
         'personCode' => $_POST['pesonCode'],
         'aNumber' => $_POST['acNumber'],
-        'balance' => 0,
+        'balance' => 0
         ];
-      $bank->create($array);
+        $bank->create($array);
+      }
+       
       header('Location: http://localhost/lape/BankOOP/views/creatNewAcount.php');
       die;
     }
@@ -35,7 +38,7 @@ $bank = new BankControl;
         <label >Nmae: </label><input  type="text" name="firstName" placeholder="First name">
         <label >Last name: </label><input  type="text" name="lastName" placeholder="Last name">
         <label >Personal code: </label><input  type="text" name="pesonCode" placeholder="Personal code">
-        <label >Nr: </label><input  type="text" name="acNumber" value="LT:">
+        <label >Nr: </label><input  type="text" name="acNumber" value="<?= $bank->acountNumber()?>">
       </div>
       
       <button type="submit">Nauja Saskaita</button>

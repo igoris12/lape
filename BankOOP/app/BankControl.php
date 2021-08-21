@@ -15,12 +15,6 @@ class BankControl implements DataBase {
         file_put_contents(__DIR__.'/data.json',$userData);
     }
 
-    public function a($a) {
-        $userData= json_encode($a);
-        file_put_contents(__DIR__.'/data.json',$userData);
-    }
-
-    
     // messange
     function update(int $userId, array $userData) : void {
 
@@ -91,32 +85,59 @@ class BankControl implements DataBase {
       
     }
 
-    // creat calidation 
-    public function addNewAccountCintrol(): array {
-        $array = [];
+    // look to make soem changes + messages
+    public function addNewAccountCintrol(): bool {
+        
         if ('POST' == $_SERVER['REQUEST_METHOD']) {
             if (
             is_numeric($_POST['pesonCode']) &&
             strlen($_POST['pesonCode']) == 11 &&
-            nameControl($_POST['firstName'])&&
-            nameControl($_POST['lastName']) &&
-            nameNumberControl($_POST['firstName']) &&
-            nameNumberControl($_POST['lastName']) &&
-            personCodeStartControl($_POST['pesonCode'])
+            $this->nameControl($_POST['firstName'])&&
+            $this->nameControl($_POST['lastName']) &&
+            $this->nameNumberControl($_POST['firstName']) &&
+            $this->nameNumberControl($_POST['lastName']) &&
+            $this->personCodeStartControl($_POST['pesonCode'])
             ) {
-            // accountNumberControl();
-            // personCodeControl();
-            $array = [
-            'id' => rand(1000000000, 9999999999),
-            'name' => $_POST['firstName'],
-            'lastName' => $_POST['lastName'],
-            'personCode' => $_POST['pesonCode'],
-            'aNumber' => $_POST['acNumber'],
-            'balance' => 0,
-            ];
-            return $array;
+            return true;
+            }else {
+                return false;
             }
         }
     } 
+//+
+    public function acountNumber() {
+        $acountNumber = 'LT1873000';
+
+        for($i =0; $i<11; $i++) {
+        $number=rand(0,9); 
+        $acountNumber = $acountNumber.$number;
+        }
+        
+        return $acountNumber;
+    }
+
+    public function nameControl(string $name){
+        return strlen($name) >= 3 ? true : false; 
+    }
+
+    public function nameNumberControl(string $name){
+    for ($i = 0; $i< strlen($name); $i++) {
+        if (
+        $name[$i] == "0" || $name[$i] == "1" ||
+        $name[$i] == "2" || $name[$i] == "3" ||
+        $name[$i] == "4" || $name[$i] == "5" ||
+        $name[$i] == "6" || $name[$i] == "7" ||
+        $name[$i] == "8" || $name[$i] == "9" ||
+         $name[$i] == " " 
+         ) {
+            return false;
+        }
+    }
+   return true; 
+    }  
+    
+    public function personCodeStartControl($code) {
+    return ($code[0] == 3 || $code[0] == 4 || $code[0] == 5 || $code[0] == 6 ) ? true : false;
+    }
 }
     
