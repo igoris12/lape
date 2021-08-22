@@ -1,7 +1,7 @@
 <?php 
 //  session_start();
- require 'C:\xampp\htdocs\lape\BankOOP\app/DataBase.php';
- require 'C:\xampp\htdocs\lape\BankOOP\app/BankControl.php';
+//  require 'C:\xampp\htdocs\lape\BankOOP\app/DataBase.php';
+//  require 'C:\xampp\htdocs\lape\BankOOP\app/BankControl.php';
  require 'C:\xampp\htdocs\lape\BankOOP\views/top.php';
 
 //  $_SESSION['bank'] = new BankControl;

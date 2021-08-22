@@ -1,9 +1,5 @@
 <?php
 
-
-
-// $bank = new BankControl;
-
 class Router {
 
 public function roter() {

@@ -1,6 +1,4 @@
 <?php
-require __DIR__. '/Account.php';
-
 
 
 class BankControl implements DataBase {
@@ -40,7 +38,7 @@ class BankControl implements DataBase {
     }
 
 
-// massages
+// massages bug need to fix
     function delete(int $userId) : void {
         $accounts = $this->showAll();
 
@@ -48,9 +46,13 @@ class BankControl implements DataBase {
             if ($account['balance'] == 0) {
                if ($account['id'] == $userId) {
                 unset($accounts[$key]);
-                break;
-                } 
+                $this->addMassage('success', 'god');
+                }
+                  break;
             }
+            elseif ($account['balance'] !== 0) {
+                $this->addMassage('danger', 'This account cannot be deleted');
+                }
             
         }
         $accounts = json_encode($accounts);
@@ -138,6 +140,23 @@ class BankControl implements DataBase {
     
     public function personCodeStartControl($code) {
     return ($code[0] == 3 || $code[0] == 4 || $code[0] == 5 || $code[0] == 6 ) ? true : false;
+    }
+
+    // messages 
+    function addMassage(string $type, string $msg) : void {
+        $_SESSION['msg'][]= ['type' => $type, 'msg' => $msg];
+    }
+
+    function clearMessage(): void {
+        $_SESSION['msg'] = [];
+    }
+
+    function showMessage(): void {
+        if (isset($_SESSION['msg'])) {
+        $message = $_SESSION['msg'];
+        $this->clearMessage();
+        require 'C:\xampp\htdocs\lape\BankOOP\views\msg.php';
+        }
     }
 }
     

@@ -1,9 +1,6 @@
 
 <?php 
-
  require __DIR__ . '/top.php';
- require 'C:\xampp\htdocs\lape\BankOOP\app/DataBase.php';
- require 'C:\xampp\htdocs\lape\BankOOP\app/BankControl.php';
 
 
 $bank = new BankControl;

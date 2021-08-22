@@ -1,9 +1,17 @@
+<?php 
+session_start();
+ require 'C:\xampp\htdocs\lape\BankOOP\app/DataBase.php';
+ require 'C:\xampp\htdocs\lape\BankOOP\app/BankControl.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Bank opp</title>
 </head>
 <body>
@@ -119,16 +127,15 @@
 
         .actionForm {
             display: inline-block;
-
-
         }
-
         .actionForm  input, button{ 
             margin: 10px;
             font-size: 16px;
             font-weight: 500;
         }
-
-        
-
     </style>
+
+<?php 
+    $bank = new BankControl;
+    $bank->showMessage() 
+?>
