@@ -20,8 +20,10 @@ $bank = new BankControl;
         'balance' => 0
         ];
         $bank->create($array);
+      }else {
+        $bank->addMassage('danger', 'add message');
       }
-       
+
       header('Location: http://localhost/lape/BankOOP/views/creatNewAcount.php');
       die;
     }

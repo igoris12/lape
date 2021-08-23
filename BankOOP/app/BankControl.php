@@ -11,6 +11,7 @@ class BankControl implements DataBase {
 
         $userData= json_encode($reInfo);
         file_put_contents(__DIR__.'/data.json',$userData);
+        $this->addMassage('success', 'New account created');
     }
 
     // messange
@@ -38,7 +39,7 @@ class BankControl implements DataBase {
     }
 
 
-// massages bug need to fix
+// massages bug need to fix delete
     function delete(int $userId) : void {
         $accounts = $this->showAll();
 
@@ -47,8 +48,8 @@ class BankControl implements DataBase {
                if ($account['id'] == $userId) {
                 unset($accounts[$key]);
                 $this->addMassage('success', 'god');
+                break;
                 }
-                  break;
             }
             elseif ($account['balance'] !== 0) {
                 $this->addMassage('danger', 'This account cannot be deleted');
@@ -58,12 +59,6 @@ class BankControl implements DataBase {
         $accounts = json_encode($accounts);
         file_put_contents(__DIR__.'/data.json',$accounts);
     }
-
-
-
-
-
-
 
     //+
     function show(int $userId) : array {
@@ -139,7 +134,8 @@ class BankControl implements DataBase {
     }  
     
     public function personCodeStartControl($code) {
-    return ($code[0] == 3 || $code[0] == 4 || $code[0] == 5 || $code[0] == 6 ) ? true : false;
+    return ($code[0] == 3 || $code[0] == 4 || $code[0] == 5 || $code[0] == 6 ||
+    count($code) <= 11 || count($code) >= 11) ? true : false;
     }
 
     // messages 

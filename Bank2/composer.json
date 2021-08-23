@@ -1,0 +1,20 @@
+{
+    "name": "modulis/bank2",
+    "description": "Bank project 2.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Igoris Ivanovas",
+            "email": "igoris.x@inbox.lt"
+        }
+    ],
+    "require": {},
+    "autoload": {
+    "psr-4": {
+        "Bank\\": "app/",
+        "App\\DB\\": "app/",
+        "Bank\\Controller\\": "app/Controllers"
+        
+    }
+}
+}
