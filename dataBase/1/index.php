@@ -31,7 +31,7 @@ echo "<ul>";
 $stmt = $pdo->query($sql);
 while ($row = $stmt->fetch())
 {   
-    echo  '<li>'.$row['id'] . " " .$row['name'] . " ".$row['height']. " m " .$row['type'] . " type";
+    echo  '<li>' .$row['id'] . " " .$row['name'] . " ".$row['height']. " m " .$row['type'] . " type";
 }
 echo "</ul>";
 
